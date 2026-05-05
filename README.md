@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SETUP PRO - Plataforma de Reseñas de Tech
 
-## Getting Started
+> Blog/Marketplace de reseñas de equipamiento tech (Gaming + Productividad)
 
-First, run the development server:
+## 📋 Stack Técnico
+
+- **Frontend:** Next.js 14+ (TypeScript) + Tailwind CSS v4
+- **Backend:** Next.js API Routes
+- **Database:** PostgreSQL (Prisma ORM)
+- **Auth:** JWT (JSON Web Tokens)
+- **Storage:** Cloudinary (imágenes)
+- **Deploy:** Vercel + Railway
+
+## 🚀 Setup Local (Rápido)
+
+### Prerequisitos
+- Node.js 18+ instalado
+- Git instalado
+- PostgreSQL (local o Railway)
+
+### Paso 1: Clonar & Instalar
+
+```bash
+git clone <repo-url>
+cd setup-pro
+npm install
+```
+
+### Paso 2: Variables de Entorno
+
+```bash
+cp .env.example .env.local
+# Edita .env.local con tus credenciales
+```
+
+### Paso 3: Database
+
+```bash
+npm run db:push
+npm run db:seed
+```
+
+### Paso 4: Desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Admin Credentials
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+Email: admin@setupprohq.com
+Password: admin123
+```
 
-## Learn More
+## 📊 Rutas Disponibles
 
-To learn more about Next.js, take a look at the following resources:
+- `/` - Home
+- `/reviews` - Listado
+- `/reviews/[slug]` - Individual
+- `/auth/login` - Login
+- `/admin` - Dashboard (protegido)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Comandos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev              # Servidor local
+npm run db:push        # Aplicar schema
+npm run db:seed        # Seed datos
+npm run db:studio      # Prisma UI
+npm run lint           # Linter
+npm run format         # Prettier
+```
 
-## Deploy on Vercel
+## 🏗️ Estructura
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/
+│   ├── (public)/       → Public pages
+│   ├── admin/          → Admin dashboard
+│   ├── auth/           → Auth
+│   └── api/            → API endpoints
+├── components/         → React components
+├── lib/                → Utilities
+├── types/              → Types
+└── middleware.ts       → Route protection
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🗄️ Database Schema
+
+- `users` - Admin accounts
+- `categories` - Review categories
+- `reviews` - Reviews with content
+- `newsletter_subscribers` - Subscribers
+- `page_views` - Analytics
+
+## 🔌 API Endpoints
+
+All under `/api/v1`:
+
+- `GET /reviews` - List all
+- `GET /reviews/[id]` - Get one
+- `POST /reviews` - Create (admin)
+- `PUT /reviews/[id]` - Edit (admin)
+- `DELETE /reviews/[id]` - Delete (admin)
+- `POST /auth/login` - Login
+- `POST /auth/logout` - Logout
+
+## 🚢 Deploy
+
+1. Create Railway PostgreSQL
+2. Push to GitHub
+3. Connect Vercel
+4. Add env vars
+5. Auto-deploy!
+
+## 🔒 Security
+
+- ✅ JWT with httpOnly cookies
+- ✅ SQL injection prevention
+- ✅ CSRF protection
+- ✅ Password hashing
+- ✅ Protected routes
+
+---
+
+**Built with ❤️ using Next.js**
